@@ -1,0 +1,20 @@
+type Party {
+    id: ID!,
+    partyId: String!,
+    playlistId: String!,
+    spotifyRefreshToken: String!,
+    spotifyAcessToken: String!,
+    startDate: String!
+}
+
+type Query {
+    parties(count: Int): [Party]
+    party(id: ID): Party
+    partyById(partyId: String): Party
+}
+
+type Mutation {
+    createParty(partyId: String!, playlistId: String!, spotifyRefreshToken: String!, spotifyAcessToken: String!): Party
+    createBasicParty(partyId: String!, spotifyAuthCode: String!): Party
+    refreshToken(partyId: String!): Party
+}
